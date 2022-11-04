@@ -1,17 +1,15 @@
 # ML on M1 mac
 
-Everything here is the thinking as of 11/03/2022.
+This document tries different components of a (python based) Machine Learning (ML) stack on Apple Silicon (M1) macs.
 
-m1* macs are:
+Everything here is the thinking as of 11/03/2022, and is subject to change.
 
-- defined as all macs from original m1 all the way to the latest apple silicon (m1, m1 pro, m1 max, m1 ultra, m2)
-- practically, tested on original m1 mac mini running macOS Ventura 13.0 (22A380) with vs code and terminal
+Apple Silicon includes all macs from original m1 all the way to the latest apple silicon (m1, m1 pro, m1 max, m1 ultra, m2). Practically, the following were tested on the original m1 mac mini running macOS Ventura 13.0 (22A380) with vs code and terminal.
 
-This document shows the steps to get ML to work on m1* macs:
+We have many choices for a package manager - venv+pip, miniconda+(conda-forge/pip), miniforge, anaconda, mamba, mambaforge.
+miniconda3 now supports m1 macs with python 3.9.latest. So, we will use miniconda to create the conda environment.
 
-- Package manager and python version
-  - Options: venv+pip, miniconda+(conda-forge/pip), miniforge, anaconda, mamba, mambaforge
-  - miniconda3 now supports m1* macs with python 3.9.latest. So, we will use miniconda to create the conda environment.
+So, download and install miniconda for Apple M1 from [here](https://docs.conda.io/en/latest/miniconda.html), following the instructions there.
 
 ## Classical ML
 
@@ -22,13 +20,13 @@ This document shows the steps to get ML to work on m1* macs:
   conda activate ml_py_lt_3_10
   ```
 
-- The core python stack consists of the following libraries (in a very subjective order based on the thinking: "I must make this work before I can make that work"):
+- The core classical python stack:
   - numpy - `conda install -c conda-forge matplotlib`
   - matplotlib - `conda install -c conda-forge matplotlib`
   - scipy - `conda install -c conda-forge scipy`
   - pandas - `conda install -c conda-forge pandas`
   - scikit-learn - `conda install -c conda-forge scikit-learn`
-  - seaborn - `conda install -c conda-forge seaborn` (which includes statsmodels)
+  - seaborn - `conda install -c conda-forge seaborn` (which includes statsmodels - installed but not tried out yet)
 
 ## Tensorflow 2 on M1 Mac
 
@@ -77,8 +75,10 @@ This document shows the steps to get ML to work on m1* macs:
 - 🤗Training, fine tuning, inference on huggingface transformers
 - 🤗 with tensorflow
 - Jax
-- 🤗Diffusers
+- 🤗Diffusers (Note: there were some issues getting stable-diffusion to work)
 - 🤗Accelerators
 - Pytorch lightning
-- Kitchen sink torch stack (with all other common libraries)
-- haven't really tried many others specifically: parquet, tqdm, boken, ...
+- Kitchen sink 🤗+torch stack (with all other common libraries)
+- Kitchen sink 🤗+tensorflow stack
+- Many others to try: spacy, parquet, boto3, tqdm, onnxruntime, statsmodels, xgboost, lightgbm, catboost, bokeh, etc.
+- Combined torch and tensorflow 🤗 kitchen sink stack (is this supported?)
