@@ -7,11 +7,11 @@ m1* macs are:
 - defined as all macs from original m1 all the way to the latest apple silicon (m1, m1 pro, m1 max, m1 ultra, m2)
 - practically, tested on original m1 mac mini running macOS Ventura 13.0 (22A380) with vs code and terminal
 
-This document shows the steps to get ML to work on an M1 based mac:
+This document shows the steps to get ML to work on m1* macs:
 
 - Package manager and python version
   - Options: venv+pip, miniconda+(conda-forge/pip), miniforge, anaconda, mamba, mambaforge
-  - miniconda3 now supports m1* macs with python 3.9.latest. So, use this to create the conda environment:
+  - miniconda3 now supports m1* macs with python 3.9.latest. So, we will use miniconda to create the conda environment.
 
 ## Classical ML
 
@@ -32,9 +32,9 @@ This document shows the steps to get ML to work on an M1 based mac:
 
 ## Tensorflow 2 on M1 Mac
 
-- Tensorflow 2 has been compatible with M1 macs via Apple Metal for a while now 
+- Tensorflow 2 has been compatible with M1 macs via Apple Metal for a while now
   - official instructions [here](https://developer.apple.com/metal/tensorflow-plugin/) fail with grpcio install - see [open issue](https://github.com/grpc/grpc/issues/25082)
-  - next tried [this](https://wandb.ai/tcapelle/apple_m1_pro/reports/Deep-Learning-on-the-M1-Pro-with-Apple-Silicon---VmlldzoxMjQ0NjY3)
+  - This one works [this](https://wandb.ai/tcapelle/apple_m1_pro/reports/Deep-Learning-on-the-M1-Pro-with-Apple-Silicon---VmlldzoxMjQ0NjY3)
     - Use tf_apple.yml from [here](https://github.com/tcapelle/apple_m1_pro_python/blob/main/tensorflow/tf_apple.yml)
       - change the name of the environment as needed (from tf2 in the file) - tf2_metal
       - (remove wandb and fastcore if not needed)
@@ -51,7 +51,7 @@ This document shows the steps to get ML to work on an M1 based mac:
 
 ## Pytorch on M1 Mac
 
-- Try [this article](https://wandb.ai/capecape/pytorch-M1Pro/reports/PyTorch-Runs-On-the-GPU-of-Apple-M1-Macs-Now-Announcement-With-Code-Samples---VmlldzoyMDMyNzMz#-run-this-benchmark-and-contribute-to-this-table-🚀) steps from September 2022
+- Based on [this article](https://wandb.ai/capecape/pytorch-M1Pro/reports/PyTorch-Runs-On-the-GPU-of-Apple-M1-Macs-Now-Announcement-With-Code-Samples---VmlldzoyMDMyNzMz#-run-this-benchmark-and-contribute-to-this-table-🚀) steps from September 2022
   - deactivate conda (as many times as needed to get out of any environment) - `conda deactivate`
   - Create conda environment: `conda create --name="pytorch_metal" python`
   - Activate the environment: `conda activate pytorch_metal`
@@ -81,4 +81,4 @@ This document shows the steps to get ML to work on an M1 based mac:
 - 🤗Accelerators
 - Pytorch lightning
 - Kitchen sink torch stack (with all other common libraries)
-- haven't really tried many others: parquet, tqdm, boken, ...
+- haven't really tried many others specifically: parquet, tqdm, boken, ...
