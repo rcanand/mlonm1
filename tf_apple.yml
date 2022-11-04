@@ -1,0 +1,25 @@
+# as described in https://wandb.ai/tcapelle/apple_m1_pro/reports/Deep-Learning-on-the-M1-Pro-with-Apple-Silicon---VmlldzoxMjQ0NjY3
+# from https://github.com/tcapelle/apple_m1_pro_python/blob/main/tensorflow/tf_apple.yml
+name: tf2_metal
+channels:
+    - apple
+    - conda-forge
+dependencies:
+    - python<3.10
+    - pip>=19.0
+    - jupyter
+    - tensorflow-deps
+    - tensorflow-datasets
+    - scikit-learn
+    - scipy
+    - pandas
+    - pandas-datareader
+    - matplotlib
+    - pillow
+    - tqdm
+    - requests
+    - h5py
+    - pyyaml
+    - pip:
+        - tensorflow-macos
+        - tensorflow-metal
