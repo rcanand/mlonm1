@@ -21,7 +21,7 @@ So, download and install miniconda for Apple M1 from [here](https://docs.conda.i
   ```
 
 - The core classical python stack:
-  - numpy - `conda install -c conda-forge matplotlib`
+  - numpy - `conda install -c conda-forge numpy`
   - matplotlib - `conda install -c conda-forge matplotlib`
   - scipy - `conda install -c conda-forge scipy`
   - pandas - `conda install -c conda-forge pandas`
