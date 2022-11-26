@@ -15,7 +15,8 @@ So, download and install miniconda for Apple M1 from [here](https://docs.conda.i
 
   ```sh
   conda create --name=ml_py_lt_3_10 "python<3.10"
-  # if any conda environment is active, even base, then deactivate it first
+  # if you any conda environment is active, even base, then deactivate it first
+  # also do this if it seems to pick up the wrong python version
   conda deactivate
   conda activate ml_py_lt_3_10
   ```
@@ -32,14 +33,14 @@ So, download and install miniconda for Apple M1 from [here](https://docs.conda.i
 
 - Tensorflow 2 has been compatible with M1 macs via Apple Metal for a while now
   - official instructions [here](https://developer.apple.com/metal/tensorflow-plugin/) fail with grpcio install - see [open issue](https://github.com/grpc/grpc/issues/25082)
-  - This one works [this](https://wandb.ai/tcapelle/apple_m1_pro/reports/Deep-Learning-on-the-M1-Pro-with-Apple-Silicon---VmlldzoxMjQ0NjY3)
+  - [This](https://wandb.ai/tcapelle/apple_m1_pro/reports/Deep-Learning-on-the-M1-Pro-with-Apple-Silicon---VmlldzoxMjQ0NjY3) one works
     - Use tf_apple.yml from [here](https://github.com/tcapelle/apple_m1_pro_python/blob/main/tensorflow/tf_apple.yml)
       - change the name of the environment as needed (from tf2 in the file) - tf2_metal
       - (remove wandb and fastcore if not needed)
     - `conda env create --file=tf_apple.yml`
     - deactivate previous environments till no environment remains - call repeatedly - `conda deactivate`
     - activate the environment - `conda activate tf2`
-    - run a test tensorflow script like the one in [this article section 4. Verify](https://developer.apple.com/metal/tensorflow-plugin/)
+    - run a test tensorflow script like the one in [this article - see section 4. Verify](https://developer.apple.com/metal/tensorflow-plugin/)
     - this environment also has jupyter, so you can run tensorflow in a notebook:
       - first, install the environment as a kernel in jupyter - `python -m ipykernel install --user --name tf2_metal --display-name "Python3.9.13(tf2_metal)"`
       - launch `jupyter notebook`
